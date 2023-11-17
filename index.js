@@ -5,9 +5,17 @@ const app = express()
 
 const caminhoBase = path.join(__dirname, "templates")
 
- // https://localhost:3000/usuarios
-app.get('/usuarios')
+ // https://localhost:3000/usuarios/
+app.get('/usuarios/:identificador'), (requisicao, resposta) => {
 
+    const id = require.params.id
+    
+    console.log('Acessando dados do usuário ${identificador}')
+
+    resposta.sendFile('${caminhoBase}/usuarios.html')
+}
+
+ // https://localhost:3000
 app.get ('/', (requisicao, resposta) => {
     resposta.sendFile('${caminhoBase}/index.html')
 })
